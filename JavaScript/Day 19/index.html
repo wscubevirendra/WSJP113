@@ -110,7 +110,6 @@
 
         })
 
-
         function addTudo() {
             const value = inp.value.trim();
             if (value === "") return alert("Please enter any content");
@@ -118,23 +117,20 @@
             const li = document.createElement("li");
             li.classList.add("listItem");
 
-            const span = document.createElement("span");
-            span.innerText = value;
+            // Set innerHTML with span and button inside li
+            li.innerHTML = `
+        <span>${value}</span>
+        <button class="deltBtn">Delete</button>
+    `;
 
-            const button = document.createElement("button");
-            button.classList.add("deltBtn");
-            button.textContent = 'Delete';
-            button.onclick = function () {
+            // Attach delete event listener to the button
+            li.querySelector("button").onclick = function () {
                 li.remove();
             }
 
-            li.appendChild(span);
-            li.appendChild(button);
             list.appendChild(li);
-
             inp.value = "";
         }
-
 
     </script>
 
